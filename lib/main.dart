@@ -1,77 +1,48 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const PerguntaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PerguntaApp extends StatelessWidget {
+  const PerguntaApp({super.key});
+
+
+  void responderA() {
+    print("A");
+  }
+  void responderB() {
+    print("B");
+  }
+  void responderC() {
+    print("C");
+  }
+  void responderD() {
+    print("D");
+  }
 
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      'Qual é a sua cor favorita',
+      'Qual é sua música favortia',
+    ];
     return MaterialApp(
-      title: 'Bagaer',
-      theme: ThemeData(
-      
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(242, 236, 212, 0)),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'B A G A E R'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      
-        title: Text(widget.title),
-      ),
-      body: Center(
-   
-        child: Column(
-          
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'NÚMERO DE BAGAGENS CADASTRADAS',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Perguntas'),
+          backgroundColor: Colors.blue,
+        ),
+        body: Column(
+          children: [
+            Text(perguntas[0]),
+            ElevatedButton(onPressed: () => responderA, child: Text('A')),
+            ElevatedButton(onPressed: () => responderB, child: Text('B')),
+            ElevatedButton(onPressed: () => responderC, child: Text('C')),
+            ElevatedButton(onPressed: () => responderD, child: Text('D')),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 }
