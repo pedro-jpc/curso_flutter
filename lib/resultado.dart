@@ -32,7 +32,7 @@ class Resultado extends StatelessWidget {
             ),
           ),
         ),
-        TextButton(
+        FloatingActionButton.large(
           onPressed: quandoReiniciarQuestionario,
           child: const Text(
             'Reiniciar?',
