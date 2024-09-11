@@ -33,7 +33,7 @@ class Questionario extends StatelessWidget {
             resp['texto'] as String,
             () => quandoResponder(resp['pontuacao'] as int),
           );
-        }).toList(),
+        }),
       ],
     );
   }

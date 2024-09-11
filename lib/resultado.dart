@@ -8,14 +8,14 @@ class Resultado extends StatelessWidget {
       {super.key});
 
   String get fraseResultado {
-    if (pontuacao < 8) {
-      return 'Parabéns';
-    } else if (pontuacao < 12) {
-      return 'Você é bom!';
-    } else if (pontuacao < 16) {
-      return 'Impressionante!';
+    if (pontuacao == 10) {
+      return 'Caso gravíssimo!';
+    } else if (pontuacao == 9) {
+      return 'Caso grave!';
+    } else if (pontuacao == 8) {
+      return 'Caso moderado!';
     } else {
-      return 'Nível Jedi!';
+      return 'VIAGEM TRANQUILA!';
     }
   }
 
@@ -32,12 +32,15 @@ class Resultado extends StatelessWidget {
             ),
           ),
         ),
-        FloatingActionButton.large(
+        FloatingActionButton(
+        
           onPressed: quandoReiniciarQuestionario,
+          focusColor: Colors.blueGrey,
           child: const Text(
-            'Reiniciar?',
+            'Voltar',
             style: TextStyle(
               fontSize: 18,
+              color: Colors.black,
             ),
           ),
         ),

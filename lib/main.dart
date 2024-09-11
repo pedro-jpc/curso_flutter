@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import './questionario.dart';
 import './resultado.dart';
 
@@ -9,32 +9,15 @@ class _PerguntaAppState extends State<PerguntaApp> {
   var _pontuacaoTotal = 0;
   final _perguntas = const [
     {
-      'texto': 'Qual é a sua cor favorita?',
+      'texto': 'O que ocorreu com sua Bagagem?',
       'respostas': [
-        {'texto': 'Preto', 'pontuacao': 10},
-        {'texto': 'Vermelho', 'pontuacao': 5},
-        {'texto': 'Verde', 'pontuacao': 3},
-        {'texto': 'Branco', 'pontuacao': 1},
+        {'texto': 'Bagagem danificada', 'pontuacao': 9},
+        {'texto': 'Bagagem perdida', 'pontuacao': 10},
+        {'texto': 'Objeto roubado', 'pontuacao': 10},
+        {'texto': 'Objeto danificado', 'pontuacao': 8},
+        {'texto': 'Nenhuma ocorrência', 'pontuacao': 7},
       ],
     },
-    {
-      'texto': 'Qual é o seu animal favorito?',
-      'respostas': [
-        {'texto': 'Coelho', 'pontuacao': 10},
-        {'texto': 'Cobra', 'pontuacao': 5},
-        {'texto': 'Elefante', 'pontuacao': 3},
-        {'texto': 'Leão', 'pontuacao': 1},
-      ],
-    },
-    {
-      'texto': 'Qual é o seu instrutor favorito?',
-      'respostas': [
-        {'texto': 'Leo', 'pontuacao': 10},
-        {'texto': 'Maria', 'pontuacao': 5},
-        {'texto': 'João', 'pontuacao': 3},
-        {'texto': 'Pedro', 'pontuacao': 1},
-      ],
-    }
   ];
 
   void _responder(int pontuacao) {
@@ -60,17 +43,41 @@ class _PerguntaAppState extends State<PerguntaApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, 
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Perguntas'),
+          title: const Text('APP BAGAER'),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
         ),
-        body: temPerguntaSelecionada
+        body: Column(
+          children: <Widget>[
+            const SizedBox(height: 20), // Espaço entre o AppBar e a imagem
+            Image.asset(
+              'assets/logo.jpeg', // Caminho da imagem
+              width: 150, // Defina a largura desejada
+              height: 150, // Defina a altura desejada
+              fit: BoxFit.cover, // Ajuste a imagem ao espaço disponível
+            ),
+            temPerguntaSelecionada
             ? Questionario(
                 perguntas: _perguntas,
                 perguntaSelecionada: _perguntaSelecionada,
                 quandoResponder: _responder,
               )
             : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
+            Container(
+                child: Column(children: <Widget>[
+              const SizedBox(height: 10), // Espaço entre o AppBar e a imagem
+              Image.asset(
+                'assets/wizzard_1.jpeg', // Caminho da imagem
+                width: 200, // Defina a largura desejada
+                height: 200, // Defina a altura desejada
+                //fit: BoxFit.cover, // Ajuste a imagem ao espaço disponível
+              ),
+            ])),
+          ],
+        ),
       ),
     );
   }
