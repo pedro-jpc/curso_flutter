@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import './questionario.dart';
 import './resultado.dart';
 
@@ -43,7 +43,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('APP BAGAER'),
@@ -59,13 +59,14 @@ class _PerguntaAppState extends State<PerguntaApp> {
               height: 150, // Defina a altura desejada
               fit: BoxFit.cover, // Ajuste a imagem ao espaço disponível
             ),
+
             temPerguntaSelecionada
-            ? Questionario(
-                perguntas: _perguntas,
-                perguntaSelecionada: _perguntaSelecionada,
-                quandoResponder: _responder,
-              )
-            : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
+                ? Questionario(
+                    perguntas: _perguntas,
+                    perguntaSelecionada: _perguntaSelecionada,
+                    quandoResponder: _responder,
+                  )
+                : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
             Container(
                 child: Column(children: <Widget>[
               const SizedBox(height: 10), // Espaço entre o AppBar e a imagem
